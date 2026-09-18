@@ -1,6 +1,7 @@
 package com.raghu.bookapi.service;
 
 import com.raghu.bookapi.model.Book;
+import com.raghu.bookapi.model.Genre;
 import com.raghu.bookapi.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -38,4 +39,30 @@ public class BookService {
         return "Book deleted successfully";
 
     }
+
+    public List<Book> searchBooks(String keyword){
+       return bookRepository.findByTitleContainingOrAuthorContaining(keyword,keyword);
+
+    }
+
+    public List<Book> searchBooksByGenre(Genre genre){
+        return bookRepository.findByGenre(genre);
+    }
+//    public List<Book> searchBooksByTitleContaining(String title){
+//        return bookRepository.findByTitleContaining(title);
+//    }
+    public List<Book> searchBooksByAvailableTrue(){
+        return bookRepository.findByAvailableTrue();
+    }
+
+    public Book toggleAvailability(Long id) {
+        Book book = getBookById(id);
+        // if available is null treat it as false
+        boolean current = book.getAvailable() != null && book.getAvailable();
+        book.setAvailable(!current);
+        return bookRepository.save(book);
+    }
+
+
+
 }

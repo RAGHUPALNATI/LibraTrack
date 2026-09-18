@@ -2,6 +2,7 @@ package com.raghu.bookapi.controller;
 
 
 import com.raghu.bookapi.model.Book;
+import com.raghu.bookapi.model.Genre;
 import com.raghu.bookapi.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +40,25 @@ public class BookController {
     public ResponseEntity<String> deleteBook(@PathVariable Long id){
 
         return ResponseEntity.ok(bookService.deleteBook(id));
+    }
+
+    @GetMapping("/genre/{genre}")
+    public ResponseEntity<List<Book>> searchBooksByGenre(@PathVariable String genre){
+        return ResponseEntity.ok(bookService.searchBooksByGenre(Genre.valueOf(genre.toUpperCase())));
+    }
+    @GetMapping("/search/{keyword}")
+    public ResponseEntity<List<Book>> searchBooks(@PathVariable String keyword){
+        return ResponseEntity.ok(bookService.searchBooks(keyword));
+
+    }
+    @GetMapping("/available")
+    public ResponseEntity<List<Book>> searchBooksByAvailableTrue(){
+        return ResponseEntity.ok(bookService.searchBooksByAvailableTrue());
+    }
+
+    @PatchMapping("/{id}/availability")
+    public ResponseEntity<Book> toggleAvailability(@PathVariable Long id) {
+        return ResponseEntity.ok(bookService.toggleAvailability(id));
     }
 
 }
