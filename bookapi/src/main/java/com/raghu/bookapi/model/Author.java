@@ -2,6 +2,8 @@ package com.raghu.bookapi.model;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -18,8 +20,11 @@ public class Author {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "Name cannot be empty")
     @Column(nullable=false)
     private String name;
+    @NotBlank(message = "Email cannot be empty")
+    @Email(message = "Must be a valid email")
     @Column(nullable=false)
     private String email;
     @Column(nullable=true)

@@ -3,6 +3,7 @@ package com.raghu.bookapi.controller;
 
 import com.raghu.bookapi.model.Book;
 import com.raghu.bookapi.service.BookService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class BookController {
     private final BookService bookService;
 
     @PostMapping
-    public ResponseEntity<Book> createBook(@RequestBody Book book){
+    public ResponseEntity<Book> createBook(@Valid @RequestBody Book book){
         Book saved=bookService.createBook(book);
         return ResponseEntity.status(201).body(saved);
     }
@@ -31,7 +32,7 @@ public class BookController {
         return ResponseEntity.ok(bookService.getBookById(id));
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable Long id,@RequestBody Book book){
+    public ResponseEntity<Book> updateBook(@PathVariable Long id,@Valid  @RequestBody Book book){
         return ResponseEntity.ok(bookService.updateBook(id, book));
     }
 

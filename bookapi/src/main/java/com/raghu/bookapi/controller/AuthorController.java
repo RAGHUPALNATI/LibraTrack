@@ -4,6 +4,7 @@ package com.raghu.bookapi.controller;
 import com.raghu.bookapi.model.Author;
 import com.raghu.bookapi.model.Book;
 import com.raghu.bookapi.service.AuthorService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class AuthorController {
     private final AuthorService authorService;
 
     @PostMapping
-    public ResponseEntity<Author> createAuthor(@RequestBody Author author) {
+    public ResponseEntity<Author> createAuthor(@Valid @RequestBody Author author) {
         Author saved=authorService.createAuthor(author);
 
         return  ResponseEntity.status(201).body(saved);
@@ -38,7 +39,7 @@ public class AuthorController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Author> updateAuthor(@PathVariable Long id, @RequestBody Author author){
+    public ResponseEntity<Author> updateAuthor( @PathVariable Long id,@Valid @RequestBody Author author){
         return ResponseEntity.ok(authorService.updateAuthor(id, author));
     }
 
