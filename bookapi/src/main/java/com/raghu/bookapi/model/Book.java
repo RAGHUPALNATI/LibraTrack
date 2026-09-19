@@ -22,8 +22,9 @@ public class Book {
     private Long id;
     @Column(nullable=false)
     private String title;
-    @Column(nullable=false)
-    private String author;
+    @ManyToOne
+    @JoinColumn(name = "author_id",nullable = false)
+    private Author author;
     @Enumerated(EnumType.STRING)
     @Column(nullable=false)
     private Genre genre;
