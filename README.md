@@ -11,8 +11,8 @@ A Spring Boot REST API built while learning backend development.
 
 ## Phases
 - ✅ Phase 1 — Basic CRUD (Book entity)
-- ⏳ Phase 2 — Search and Filter
-- ⏳ Phase 3 — Relationships (Author entity)
+- ✅  Phase 2 — Search and Filter
+- ✅ Phase 3 — Relationships (Author ↔ Book, OneToMany, ManyToOne)
 
 ## API Endpoints
 
