@@ -10,9 +10,11 @@ A Spring Boot REST API built while learning backend development.
 - Lombok
 
 ## Phases
-- ✅ Phase 1 — Basic CRUD (Book entity)
-- ✅ Phase 2 — Search and Filter
-- ⏳ Phase 3 — Relationships (Author entity)
+Phase 1 ✅ — Basic CRUD (Book entity, REST API)
+Phase 2 ✅ — Search and Filter (custom queries)
+Phase 3 ✅ — Relationships (Author ↔ Book)
+Phase 4 ✅ — Exception handling, Validation, Swagger
+Phase 5 ✅ — Spring Security + JWT + Role-based access
 
 ## API Endpoints
 
